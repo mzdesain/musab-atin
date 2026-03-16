@@ -1,277 +1,269 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Input Nama Tamu</title>
-    
-    <meta property="og:title" content="Undangan Pernikahan Umair & Atin">
-    <meta property="og:description" content="Dengan ridho Allah SWT, kami mengundang Anda dalam pernikahan kami">
-    <meta property="og:image" content="thumbnail.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://musab-atin.vercel.app/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Undangan</title>
 
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #E8E2D6;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+<style>
 
-        .container {
-            background-color: #FCF9F3;
-            padding: 30px;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-            border: 1px solid #C9A96E;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
 
-        h1 {
-            color: #2C5530;
-            text-align: center;
-            margin-bottom: 25px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-        }
+body{
+background:#f6f7fb;
+padding:40px;
+color:#1f2937;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+/* HEADER */
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: #1A3A1E;
-        }
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
 
-        textarea {
-            width: 100%;
-            height: 200px;
-            padding: 15px;
-            border: 1px solid #E8D5B7;
-            background-color: #fff;
-            box-sizing: border-box;
-            font-size: 1rem;
-            line-height: 1.6;
-            resize: vertical;
-            outline: none;
-        }
+.header h1{
+font-size:26px;
+font-weight:600;
+}
 
-        textarea:focus {
-            border-color: #2C5530;
-            box-shadow: 0 0 0 2px rgba(44, 85, 48, 0.1);
-        }
+.badge{
+background:#e5edff;
+color:#2f5aff;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+}
 
-        button#generateButton {
-            width: 100%;
-            padding: 12px 20px;
-            border: none;
-            background-color: #2C5530;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+/* CARD */
 
-        button#generateButton:hover {
-            background-color: #1A3A1E;
-        }
+.card{
+background:white;
+padding:30px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+margin-bottom:25px;
+}
 
-        #resultsList {
-            margin-top: 30px;
-            border-top: 2px double #E8D5B7;
-            padding-top: 20px;
-        }
+/* TEXTAREA */
 
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            border: 1px solid #E8D5B7;
-            background-color: #fff;
-            margin-bottom: 12px;
-        }
+textarea{
+width:100%;
+height:170px;
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:15px;
+font-size:15px;
+resize:none;
+outline:none;
+transition:.2s;
+}
 
-        .result-item-text {
-            flex-grow: 1;
-            margin-right: 15px;
-            overflow: hidden;
-        }
+textarea:focus{
+border-color:#6366f1;
+box-shadow:0 0 0 3px rgba(99,102,241,0.1);
+}
 
-        .result-item-text p {
-            margin: 0;
-            font-size: 0.8rem;
-            color: #6C757D;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
+/* BUTTON */
 
-        .result-item-text strong {
-            font-size: 1rem;
-            color: #1A3A1E;
-            display: block;
-            margin-bottom: 5px;
-        }
+button{
+margin-top:15px;
+padding:12px 22px;
+background:#6366f1;
+border:none;
+border-radius:8px;
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:.2s;
+}
 
-        .copy-btn {
-            padding: 8px 16px;
-            border: 1px solid #C9A96E;
-            background-color: transparent;
-            color: #C9A96E;
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
+button:hover{
+background:#4f46e5;
+}
 
-        .copy-btn:hover {
-            background-color: #C9A96E;
-            color: white;
-        }
+/* RESULTS */
 
-        .copy-btn.success {
-            background-color: #2C5530;
-            border-color: #2C5530;
-            color: white;
-        }
+.results{
+margin-top:25px;
+}
 
-        .instruction {
-            font-size: 0.75rem;
-            color: #6C757D;
-            margin-top: 5px;
-            font-style: italic;
-        }
-    </style>
+.result-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 18px;
+border-radius:10px;
+border:1px solid #f0f0f0;
+margin-bottom:10px;
+background:white;
+transition:.2s;
+}
+
+.result-item:hover{
+box-shadow:0 4px 15px rgba(0,0,0,0.06);
+transform:translateY(-2px);
+}
+
+.result-text{
+max-width:70%;
+}
+
+.result-text strong{
+font-size:15px;
+display:block;
+margin-bottom:3px;
+}
+
+.result-text p{
+font-size:12px;
+color:#6b7280;
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+}
+
+/* COPY BUTTON */
+
+.copy-btn{
+background:#eef2ff;
+color:#4f46e5;
+border:none;
+padding:7px 14px;
+border-radius:6px;
+font-size:12px;
+font-weight:500;
+cursor:pointer;
+}
+
+.copy-btn:hover{
+background:#e0e7ff;
+}
+
+.copy-btn.success{
+background:#10b981;
+color:white;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Manajemen Tamu</h1>
-        
-        <div class="form-group">
-            <label for="guestListInput">Daftar Nama Tamu:</label>
-            <textarea id="guestListInput" placeholder="Contoh:
+<div class="header">
+<h1>Manajemen Tamu</h1>
+<span class="badge">Admin Panel</span>
+</div>
+
+
+<div class="card">
+
+<textarea id="guestListInput" placeholder="Masukkan nama tamu (1 baris = 1 tamu)
+
+Contoh:
 Bapak Ahmad & Keluarga
-Fulan bin Fulan
 Muzanni
-Dst."></textarea>
-            <p class="instruction">*Masukkan satu nama per baris</p>
-        </div>
+Fulan bin Fulan"></textarea>
 
-        <button id="generateButton">Hasilkan Link & Pesan</button>
+<button id="generateButton">Generate Link Undangan</button>
 
-        <div id="resultsList"></div>
-    </div>
+<div class="results" id="resultsList"></div>
 
-    <script>
-        // --- KONFIGURASI TEMPLATE ---
-        // Ganti URL ini dengan URL tempat Anda meng-host Halaman Utama nantinya
-        const LINK_DASAR = "https://musab-atin.vercel.app/"; 
-        const NAMA_PRIA = "Mus'ab Umair";
-        const NAMA_WANITA = "Rahma Zuhriatin";
-        const TANGGAL_ACARA = "Kamis, 26 Maret 2026";
+</div>
 
-        const generateButton = document.getElementById('generateButton');
-        const guestListInput = document.getElementById('guestListInput');
-        const resultsList = document.getElementById('resultsList');
 
-        function generateLinks() {
-            const rawText = guestListInput.value.trim();
-            if (!rawText) {
-                alert("Silakan masukkan nama tamu terlebih dahulu.");
-                return;
-            }
+<script>
 
-            // Pecah teks berdasarkan baris dan bersihkan baris kosong
-            const names = rawText.split('\n').map(n => n.trim()).filter(n => n !== "");
-            
-            resultsList.innerHTML = ""; // Bersihkan hasil sebelumnya
+const LINK_DASAR="https://musab-atin.vercel.app/";
 
-            names.forEach(name => {
-                const encodedName = encodeURIComponent(name);
-                const fullLink = `${LINK_DASAR}?to=${encodedName}`;
+const NAMA_PRIA="Mus'ab Umair";
+const NAMA_WANITA="Rahma Zuhriatin";
 
-                // Template Pesan WhatsApp
-                const waMessage = `*Assalamu'alaikum Warahmatullah Wabarakatuh*
+const generateButton=document.getElementById("generateButton");
+const guestListInput=document.getElementById("guestListInput");
+const resultsList=document.getElementById("resultsList");
+
+
+function generateLinks(){
+
+const rawText=guestListInput.value.trim();
+
+if(!rawText){
+alert("Masukkan nama tamu terlebih dahulu");
+return;
+}
+
+const names=rawText.split('\n').map(n=>n.trim()).filter(n=>n!="");
+
+resultsList.innerHTML="";
+
+names.forEach(name=>{
+
+const encodedName=encodeURIComponent(name);
+
+const fullLink=`${LINK_DASAR}?to=${encodedName}`;
+
+const waMessage=`*Assalamu'alaikum Warahmatullah Wabarakatuh*
 
 Yth. *${name}*
-_(Mohon maaf bila ada kekeliruan penulisan nama/gelar)_
 
-Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:
+Kami mengundang Anda menghadiri pernikahan:
 
 *${NAMA_PRIA}* & *${NAMA_WANITA}*
 
-Detail informasi mengenai acara dapat diakses melalui link undangan digital berikut:
-
+Detail acara:
 ${fullLink}
-
-Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
 
 *Wassalamu'alaikum Warahmatullahi Wabarakatuh*`;
 
-                // Buat Elemen UI
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'result-item';
+const item=document.createElement("div");
+item.className="result-item";
 
-                const textDiv = document.createElement('div');
-                textDiv.className = 'result-item-text';
-                textDiv.innerHTML = `<strong>${name}</strong><p>${fullLink}</p>`;
+const text=document.createElement("div");
+text.className="result-text";
 
-                const copyBtn = document.createElement('button');
-                copyBtn.className = 'copy-btn';
-                copyBtn.textContent = 'SALIN PESAN';
-                
-                copyBtn.onclick = function() {
-                    copyToClipboard(waMessage, copyBtn);
-                };
+text.innerHTML=`<strong>${name}</strong><p>${fullLink}</p>`;
 
-                itemDiv.appendChild(textDiv);
-                itemDiv.appendChild(copyBtn);
-                resultsList.appendChild(itemDiv);
-            });
-        }
+const btn=document.createElement("button");
+btn.className="copy-btn";
+btn.textContent="Salin Pesan";
 
-        function copyToClipboard(text, btn) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = btn.textContent;
-                btn.textContent = "TERSALIN!";
-                btn.classList.add('success');
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.classList.remove('success');
-                }, 2000);
-            }).catch(err => {
-                alert("Gagal menyalin teks.");
-            });
-        }
+btn.onclick=function(){
 
-        generateButton.addEventListener('click', generateLinks);
-    </script>
+navigator.clipboard.writeText(waMessage);
+
+btn.textContent="Tersalin!";
+btn.classList.add("success");
+
+setTimeout(()=>{
+btn.textContent="Salin Pesan";
+btn.classList.remove("success");
+},2000);
+
+};
+
+item.appendChild(text);
+item.appendChild(btn);
+
+resultsList.appendChild(item);
+
+});
+
+}
+
+generateButton.addEventListener("click",generateLinks);
+
+</script>
 
 </body>
 </html>
-
-
